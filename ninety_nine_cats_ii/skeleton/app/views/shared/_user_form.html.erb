@@ -1,0 +1,28 @@
+<% if @login %>
+  <% action, submit_text = session_url, "Login"  %>
+<% else %>
+  <% action, submit_text =  users_url, "Create User!" %>
+<% end %>
+
+
+
+<form action="<%= action %>" method="post">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <label for="user_user_name">Username:</label>
+  <input type="text"
+         name="user[user_name]"
+         id="user_user_name"
+         value="<%= @user.user_name %>">
+
+  <label for="user_password">Password:</label>
+  <input type="password"
+         name="user[password]"
+         id="user_password"
+         value="<%= @user.password %>">
+
+  <input type="submit" value="<%= submit_text %>">
+</form>
